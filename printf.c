@@ -1,6 +1,3 @@
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
 #include "main.h"
 
 /**
@@ -10,17 +7,33 @@
  * Return: 0 (Success)
  */
 
-int _printf(const unsigned int n, ...)
+int _printf(const char *format, ...)
 {
-	unsigned int i = 0;
-	char *chara;
+	int i, j;
 	va_list a;
 
-	va_start (a, n);
-	chara = va_arg(a, char *);
-	while (chara != '\0')
+	pt types[] = {
+		{"c", print_c},
+		{"d", print_d},
+		{"%", print_pour},
+		{"s", print_s},
+		{NULL, NULL}
+	};
+
+	va_start(a, format);
+	i = 0;
+	while (format && format[i])
 	{
-		_putchar (chara[i]);
+		j = 0;
+		while (types[j].conv != NULL)
+		{
+			if (format[i] == types[j].conv[0])
+			{
+				types[j].fonc(a);
+			}
+			j++;
+		}
 		i++;
 	}
+	va_end(a);
 }
