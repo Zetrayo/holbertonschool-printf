@@ -3,7 +3,7 @@
 /**
  * _printf - main function
  * Description: 'prints what is passed to it.'
- *
+ *@format: string to be processed
  * Return: 0 (Success)
  */
 
@@ -13,10 +13,11 @@ int _printf(const char *format, ...)
 	va_list a;
 
 	pt types[] = {
-		{"c", print_c},
-		{"d", print_d},
-		{"%", print_pour},
-		{"s", print_s},
+		{"c", print_char},
+		{"d", print_int},
+		{"%", print_percent},
+		{"s", print_str},
+		{"i", print_int},
 		{NULL, NULL}
 	};
 
