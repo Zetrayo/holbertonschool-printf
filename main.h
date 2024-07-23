@@ -14,10 +14,19 @@ void print_pour(va_list arg);
 void print_s(va_list arg);
 int _printf(const char *format, ...);
 
-typedef struct pter
+typedef struct format
 {
 	char *conv;
 	void (*fonc)();
-} pt;
+} format_t;
+
+format_t types[] = {
+	{"c", print_c},
+	{"d", print_d},
+	{"%", print_pour},
+	{"s", print_s},
+	{"i", print_i},
+	{NULL, NULL}
+};
 
 #endif

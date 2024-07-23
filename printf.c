@@ -9,31 +9,39 @@
 
 int _printf(const char *format, ...)
 {
-	int i, j;
-	va_list a;
+	int i = 0, j;
+	va_list arg;
 
-	pt types[] = {
-		{"c", print_c},
-		{"d", print_d},
-		{"%", print_pour},
-		{"s", print_s},
-		{NULL, NULL}
-	};
-
-	va_start(a, format);
-	i = 0;
+	va_start(arg, format);
 	while (format && format[i])
 	{
 		j = 0;
-		while (types[j].conv != NULL)
+		if (format[i] == '%')
 		{
-			if (format[i] == types[j].conv[0])
+			i++;
+			if (format[i] == '%')
 			{
-				types[j].fonc(a);
+				_putchar('%');
 			}
-			j++;
+			while (types[j].conv != NULL)
+			{
+				if (format[i] == types[j].conv[0])
+				{
+					types[j].fonc(arg);
+					j = 4;
+				}
+				j++;
+			}
+			if (j != 2)
+			{
+				_putchar('%');
+			}
+		}
+		if (j != 5)
+		{
+			_putchar(format[i]);
 		}
 		i++;
 	}
-	va_end(a);
+	va_end(arg);
 }
