@@ -14,10 +14,19 @@ void print_percent(va_list arg);
 void print_str(va_list arg);
 int _printf(const char *format, ...);
 
-typedef struct pter
+typedef struct format
 {
 	char *conv;
 	void (*fonc)();
-} pt;
+} format_t;
+
+format_t types[] = {
+	{"c", print_char},
+	{"d", print_int},
+	{"%", print_percent},
+	{"s", print_str},
+	{"i", print_intbase10},
+	{NULL, NULL}
+};
 
 #endif
