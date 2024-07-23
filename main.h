@@ -21,11 +21,11 @@ typedef struct format
 } format_t;
 
 format_t types[] = {
-	{"c", print_c},
-	{"d", print_d},
-	{"%", print_pour},
-	{"s", print_s},
-	{"i", print_i},
+	{"c", print_char},
+	{"d", print_int},
+	{"%", print_percent},
+	{"s", print_str},
+	{"i", print_intbase10},
 	{NULL, NULL}
 };
 
