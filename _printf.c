@@ -9,39 +9,43 @@
 
 int _printf(const char *format, ...)
 {
-	int i, j;
+	int buffer_count = 0, specifier_count = 0, count = 0;
+	char buffer[BUFFER_SIZE];
 	va_list arg;
 
-    va_start(arg, format);
-	while (format && format[i])
+	va_start(arg, format);
+	while (format[buffer_count])
 	{
-		j = 0;
-		if (format[i] == '%')
+		if (format[buffer_count] != '%')
 		{
-			i++;
-			if (format[i] == '%')
+			buffer[buffer_count] = format[buffer_count];
+		}
+		else if (format[buffer_count] == '%')
+		{
+			buffer_count++;
+			if (format[buffer_count] != '%')
 			{
-				_putchar('%');
-			}
-			while (types[j].conv != NULL)
-			{
-				if (format[i] == types[j].conv[0])
+				while (specifier[specifier_count].conv != NULL)
 				{
-					types[j].fonc(arg);
-					j = 4;
+					if (format[buffer_count] == specifier[specifier_count].conv[0])
+					{
+						buffer_count--;
+						specifier[specifier_count].fonc(arg, buffer, buffer_count);
+						buffer_count++;
+					}
+					specifier_count++;
 				}
-				j++;
+				specifier_count = 0; /* gerer error for %m */
 			}
-			if (j != 2)
+			else if (format[buffer_count] == '%')
 			{
-				_putchar('%');
+				buffer_count--;
+				buffer[buffer_count] = '%';
+				buffer_count++;
 			}
+			count = count + buffer_count;
 		}
-		if (j != 5)
-		{
-			_putchar(format[i]);
-		}
-		i++;
+		buffer_count++;
 	}
 	va_end(arg);
 }
