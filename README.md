@@ -8,14 +8,37 @@ _printf allows users to print a variety of variables on their terminal.
 
 ## Usage
 
+## Examples
+
+Basic single character example:
+```c
+char character = "C";
+
+_printf("I %c you", character);
+```
+Result :
+`I C you`
+
+
 Basic string example:
 ```c
 char str_to_print[] = "world!";
 
 _printf("Hello %s", str_to_print);
 ```
-Result
+Result :
 `Hello world!`
+
+
+Basic integer example:
+```c
+int number = 404;
+
+_printf("If you see %d, you are lost", number);
+```
+Result :
+`If you see 404, you are lost`
+
 
 ## Contributors
 
