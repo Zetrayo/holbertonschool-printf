@@ -8,7 +8,8 @@
  */
 int flush_buffer(char *buffer, int *buffer_index)
 {
-	int count = write(1, buffer, *buffer_index);
+	write(1, buffer, *buffer_index);
+	int count = *buffer_index;
 	*buffer_index = 0;
 	return (count);
 }
@@ -38,7 +39,17 @@ int _printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] != '%')
-			buffer[buffer_index++] = format[i], count++;
+		{
+			buffer[buffer_index++] = format[i];
+			if (buffer_index == BUFFER_SIZE)
+			{
+				count += flush_buffer(buffer, &buffer_index);
+			}
+			else
+			{
+				count++;
+			}
+		}
 		else if (format[++i])
 			count += handle_format(format[i], formats, args,
 					buffer, &buffer_index);
