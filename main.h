@@ -22,8 +22,8 @@ typedef struct format
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-/*int print_char(va_list args, char *buffer, int *buffer_index);*/
-/*int print_string(va_list args, char *buffer, int *buffer_index);*/
+int print_char(va_list args, char *buffer, int *buffer_index);
+int print_string(va_list args, char *buffer, int *buffer_index);
 int print_int(va_list args, char *buffer, int *buffer_index);
 int handle_format(char spec, format_t *formats, va_list args,
 		char *buffer, int *buffer_index);
