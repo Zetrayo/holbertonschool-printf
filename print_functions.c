@@ -1,5 +1,9 @@
 #include "main.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> edf9d17c5649541131967a11d7c5bc65378dfa11
 /**
  * print_int - Prints an integer
  * @args: List of arguments

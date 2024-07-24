@@ -1,30 +1,33 @@
-#ifndef MAIN_H_
-#define MAIN_H_
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <stdarg.h>
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #define BUFFER_SIZE 1024
 
-int _putchar(char c);
-int print_int(va_list arg, char *buffer, int *buffer_count);
-int print_number(va_list arg, char *buffer, int *buffer_count);
-int print_char(va_list arg, char *buffer, int *buffer_count);
-int print_str(va_list arg, char *buffer, int *buffer_count);
-int _printf(const char *format, ...);
-
+/**
+ * struct format - Struct for format specifiers
+ * @spec: The format specifier
+ * @f: The function associated
+ */
 typedef struct format
 {
-	char *conv;
-	void (*fonc)(va_list, char *buffer, int *buffer_count);
+	char spec;
+	int (*f)(va_list, char*, int*);
 } format_t;
 
-format_t specifier[] = {
-	{"c", print_char},
-	{"d", print_int},
-	{"s", print_str},
-	{"i", print_number},
-	{NULL, NULL}
-};
+/* function definitions */
 
-#endif
+int _putchar(char c);
+int _printf(const char *format, ...);
+/*int print_char(va_list args, char *buffer, int *buffer_index);*/
+/*int print_string(va_list args, char *buffer, int *buffer_index);*/
+int print_int(va_list args, char *buffer, int *buffer_index);
+int handle_format(char spec, format_t *formats, va_list args,
+		char *buffer, int *buffer_index);
+int flush_buffer(char *buffer, int *buffer_index);
+int print_number(unsigned int n, char *buffer, int *buffer_index);
+
+#endif /* MAIN_H */
