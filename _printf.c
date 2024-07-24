@@ -8,8 +8,10 @@
  */
 int flush_buffer(char *buffer, int *buffer_index)
 {
+	int count;
+
 	write(1, buffer, *buffer_index);
-	int count = *buffer_index;
+	count = *buffer_index;
 	*buffer_index = 0;
 	return (count);
 }
