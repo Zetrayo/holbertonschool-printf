@@ -31,6 +31,7 @@ int _printf(const char *format, ...)
 		/*{'s', print_string},*/
 		{'d', print_int},
 		{'i', print_int},
+		{'R', print_rot13string},
 		{0, NULL}
 	};
 
