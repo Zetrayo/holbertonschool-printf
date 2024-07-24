@@ -1,0 +1,9 @@
+{
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "files.associations": {
+        "operations": "c",
+        "unistd.h": "c",
+        "main.h": "c",
+        "stdio.h": "c"
+    }
+}

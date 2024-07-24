@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * print_int - Prints an integer
  * @args: List of arguments
@@ -42,5 +41,44 @@ int print_number(unsigned int n, char *buffer, int *buffer_index)
 	if (*buffer_index == BUFFER_SIZE)
 		flush_buffer(buffer, buffer_index);
 
+	return (count);
+}
+
+/**
+ * print_char - function to print chars
+ * @arg: va_list type
+ */
+int print_char(va_list arg, char *buffer, int *buffer_index)
+{
+	int c;
+	
+	c = va_arg(arg, int);
+	buffer[(*buffer_index)++] = c;
+	if (*buffer_index == BUFFER_SIZE)
+	{
+		flush_buffer(buffer, buffer_index);
+	}
+	return (1);
+}
+
+/**
+ * print_str - function to print strings
+ * @arg: va_list type
+ */
+int print_string(va_list arg,  char *buffer, int *buffer_index)
+{
+	int count = 0;
+	char *str;
+
+	str = va_arg(arg, char*);
+	while (str[count] != '\0')
+	{
+	buffer[(*buffer_index)++] = str[count];
+	count++;
+	}
+	if (*buffer_index == BUFFER_SIZE)
+	{
+		flush_buffer(buffer, buffer_index);
+	}
 	return (count);
 }
