@@ -96,6 +96,7 @@ Rot13 : [%R]
 ## Files
 
 |File |Description |
+|---------------------|------------------------------------------------------------------------------|
 |main.h | Header file containing function prototypes and necessary includes |
 |_printf.c | Main file containing functions to print regular characters and detect specifiers used |
 |print_functions.c | File containing the different functions that allow _printf.c to print variables |
