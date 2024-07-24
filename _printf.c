@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int buffer_count = 0, specifier_count = 0, count = 0;
+	int buffer_count = 0, specifier_count = 0;
 	char buffer[BUFFER_SIZE];
 	va_list arg;
 
@@ -43,9 +43,9 @@ int _printf(const char *format, ...)
 				buffer[buffer_count] = '%';
 				buffer_count++;
 			}
-			count = count + buffer_count;
 		}
 		buffer_count++;
 	}
 	va_end(arg);
+	return (buffer_count);
 }
