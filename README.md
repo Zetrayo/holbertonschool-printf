@@ -9,13 +9,13 @@ _printf allows users to print a variety of variables on their terminal.
 ## Usage
 
 Basic string example:
-'''c
+```c
 char str_to_print[] = "world!";
 
 _printf("Hello %s", str_to_print);
-'''
+```
 Result
-'Hello world!'
+`Hello world!`
 
 ## Contributors
 
