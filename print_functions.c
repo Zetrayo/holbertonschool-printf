@@ -76,17 +76,19 @@ int print_char(va_list arg, char *buffer, int *buffer_index)
 int print_string(va_list arg,  char *buffer, int *buffer_index)
 {
 	int count = 0;
-	char *str;
+	char *str = va_arg(arg, char*);
 
-	str = va_arg(arg, char*);
+	if (str == NULL)
+		str = "(null)";
+
 	while (str[count] != '\0')
 	{
-	buffer[(*buffer_index)++] = str[count];
-	count++;
-	}
-	if (*buffer_index == BUFFER_SIZE)
-	{
-		flush_buffer(buffer, buffer_index);
+		buffer[(*buffer_index)++] = str[count];
+		count++;
+		if (*buffer_index == BUFFER_SIZE)
+		{
+			flush_buffer(buffer, buffer_index);
+		}
 	}
 	return (count);
 }
