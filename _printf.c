@@ -27,8 +27,8 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0, buffer_index = 0;
 	char buffer[BUFFER_SIZE];
 	format_t formats[] = {
-		/*{'c', print_char},*/
-		/*{'s', print_string},*/
+		{'c', print_char},
+		{'s', print_string},
 		{'d', print_int},
 		{'i', print_int},
 		{0, NULL}

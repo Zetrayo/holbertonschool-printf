@@ -50,7 +50,14 @@ int print_number(unsigned int n, char *buffer, int *buffer_index)
  */
 int print_char(va_list arg, char *buffer, int *buffer_index)
 {
-	buffer[(*buffer_index)++] = va_arg(arg, char*);
+	int c;
+	
+	c = va_arg(arg, int);
+	buffer[(*buffer_index)++] = c;
+	if (*buffer_index == BUFFER_SIZE)
+	{
+		flush_buffer(buffer, buffer_index);
+	}
 	return (1);
 }
 
@@ -68,6 +75,10 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 	{
 	buffer[(*buffer_index)++] = str[count];
 	count++;
+	}
+	if (*buffer_index == BUFFER_SIZE)
+	{
+		flush_buffer(buffer, buffer_index);
 	}
 	return (count);
 }
