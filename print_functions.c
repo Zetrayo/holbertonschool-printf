@@ -43,3 +43,31 @@ int print_number(unsigned int n, char *buffer, int *buffer_index)
 
 	return (count);
 }
+
+/**
+ * print_char - function to print chars
+ * @arg: va_list type
+ */
+int print_char(va_list arg, char *buffer, int *buffer_index)
+{
+	buffer[(*buffer_index)++] = va_arg(arg, char*);
+	return (1);
+}
+
+/**
+ * print_str - function to print strings
+ * @arg: va_list type
+ */
+int print_string(va_list arg,  char *buffer, int *buffer_index)
+{
+	int count = 0;
+	char *str;
+
+	str = va_arg(arg, char*);
+	while (str[count] != '\0')
+	{
+	buffer[(*buffer_index)++] = str[count];
+	count++;
+	}
+	return (count);
+}
