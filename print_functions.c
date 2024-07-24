@@ -47,11 +47,15 @@ int print_number(unsigned int n, char *buffer, int *buffer_index)
 /**
  * print_char - function to print chars
  * @arg: va_list type
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of digits printed
  */
 int print_char(va_list arg, char *buffer, int *buffer_index)
 {
 	int c;
-	
+
 	c = va_arg(arg, int);
 	buffer[(*buffer_index)++] = c;
 	if (*buffer_index == BUFFER_SIZE)
@@ -62,8 +66,12 @@ int print_char(va_list arg, char *buffer, int *buffer_index)
 }
 
 /**
- * print_str - function to print strings
+ * print_string - function to print strings
  * @arg: va_list type
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of digits printed
  */
 int print_string(va_list arg,  char *buffer, int *buffer_index)
 {
@@ -80,5 +88,52 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 	{
 		flush_buffer(buffer, buffer_index);
 	}
+	return (count);
+}
+
+/**
+ * print_rot13string - Print a string in ROT13
+ * @args: List of arguments
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of chars printed
+ */
+int print_rot13string(va_list args, char *buffer, int *buffer_index)
+{
+	char *str;
+	unsigned int i, j;
+	int count = 0;
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(args, char *);
+	if (str == NULL)
+		str = "(AHYY)";
+
+	for (i = 0; str[i]; i++)
+	{
+		for (j = 0; in[j]; j++)
+		{
+			if (in[j] == str[i])
+			{
+				buffer[*buffer_index] = out[j];
+				(*buffer_index)++;
+				count++;
+				if (*buffer_index == BUFFER_SIZE)
+					count += flush_buffer(buffer, buffer_index);
+				break;
+			}
+		}
+		if (!in[j])
+		{
+			buffer[*buffer_index] = str[i];
+			(*buffer_index)++;
+			count++;
+			if (*buffer_index == BUFFER_SIZE)
+				count += flush_buffer(buffer, buffer_index);
+		}
+	}
+
 	return (count);
 }

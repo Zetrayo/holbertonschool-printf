@@ -29,5 +29,6 @@ int handle_format(char spec, format_t *formats, va_list args,
 		char *buffer, int *buffer_index);
 int flush_buffer(char *buffer, int *buffer_index);
 int print_number(unsigned int n, char *buffer, int *buffer_index);
+int print_rot13string(va_list args, char *buffer, int *buffer_index);
 
 #endif /* MAIN_H */
