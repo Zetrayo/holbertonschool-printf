@@ -4,7 +4,7 @@
 _printf \- custom implementation of printf function
 
 .SH SYNOPSIS
-.B #include \&"main.h\&" (be sure to copy all the files in the same directory than the source.c files)
+.B #include \&"main.h\&"
 .PP
 .BI "int _printf(const char *" format ", ...);"
 
