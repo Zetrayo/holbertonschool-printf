@@ -81,6 +81,8 @@ int handle_format(char spec, format_t *formats, va_list args,
 	if (spec == '%')
 	{
 		buffer[(*buffer_index)++] = '%';
+		if (*buffer_index == BUFFER_SIZE)
+			return (1 + flush_buffer(buffer, buffer_index));
 		return (1);
 	}
 
