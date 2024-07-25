@@ -43,7 +43,10 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			buffer[buffer_index++] = format[i];
-			count++;
+			if (buffer_index == BUFFER_SIZE)
+				count += flush_buffer(buffer, &buffer_index);
+			else
+				count++;
 		}
 		else
 		{

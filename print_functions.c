@@ -81,14 +81,12 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 	if (str == NULL)
 		str = "(null)";
 
-	while (str[count] != '\0')
+	while (str[count])
 	{
 		buffer[(*buffer_index)++] = str[count];
-		count++;
 		if (*buffer_index == BUFFER_SIZE)
-		{
 			flush_buffer(buffer, buffer_index);
-		}
+		count++;
 	}
 	return (count);
 }
