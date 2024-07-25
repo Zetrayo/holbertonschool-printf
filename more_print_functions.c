@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_octal - Prints an integer
+ * print_octal - Prints an octal
  * @args: List of arguments
  * @buffer: Buffer array to handle print
  * @buffer_index: Index at which to add next char, represents the length
@@ -35,8 +35,133 @@ int print_octal(va_list args, char *buffer, int *buffer_index)
 }
 
 /**
- * %o print a number in octal (base 8)
- * %u print an unsigned decimal (base 10) number
- * %x print a number in hexidecimal (base 16) , letters in lowercase
- * %X print a number in hexidecimal (base 16) , letters in uppercase
+ * print_unsigned_int - Prints an unsigned int
+ * @args: List of arguments
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of digits printed
  */
+int print_unsigned_int(va_list args, char *buffer, int *buffer_index)
+{
+	unsigned int n = va_arg(args, int);
+	int count = 0, num = 0, i = 0;
+	char num_tab[BUFFER_SIZE];
+
+	while (n > 0)
+	{
+		num = n % 10;
+		n = n / 10;
+		num_tab[i] = num + '0';
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		buffer[(*buffer_index)++] = num_tab[i];
+		count++;
+		if (*buffer_index == BUFFER_SIZE)
+		{
+			flush_buffer(buffer, buffer_index);
+		}
+	}
+	return (count);
+}
+
+/**
+ * print_lower_hex - Prints in hex
+ * @args: List of arguments
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of digits printed
+ */
+int print_lower_hex(va_list args, char *buffer, int *buffer_index)
+{
+	unsigned int n = va_arg(args, int);
+	int count = 0, num = 0, i = 0, j = 0;
+	char num_tab[BUFFER_SIZE];
+	int in[6] = {10, 11, 12, 13, 14, 15};
+	char out[6] = {'a', 'b', 'c', 'd', 'e', 'f'};
+
+	while (n > 0)
+	{
+		num = n % 16;
+		n = n / 16;
+		while (j <= 5)
+		{
+			if (num == in[j])
+			{
+				num_tab[i] = out[j];
+				break;
+			}
+			j++;
+		}
+		if (num <= 9 && num >= 0)
+		{
+		num_tab[i] = num + '0';
+		}
+		j = 0;
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		buffer[(*buffer_index)++] = num_tab[i];
+		count++;
+		if (*buffer_index == BUFFER_SIZE)
+		{
+			flush_buffer(buffer, buffer_index);
+		}
+	}
+	return (count);
+}
+
+/**
+ * print_upper_hex - Prints in hex
+ * @args: List of arguments
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of digits printed
+ */
+int print_upper_hex(va_list args, char *buffer, int *buffer_index)
+{
+	unsigned int n = va_arg(args, int);
+	int count = 0, num = 0, i = 0, j = 0;
+	char num_tab[BUFFER_SIZE];
+	int in[6] = {10, 11, 12, 13, 14, 15};
+	char out[6] = {'A', 'B', 'C', 'D', 'E', 'F'};
+
+	while (n > 0)
+	{
+		num = n % 16;
+		n = n / 16;
+		while (j <= 5)
+		{
+			if (num == in[j])
+			{
+				num_tab[i] = out[j];
+				break;
+			}
+			j++;
+		}
+		if (num <= 9 && num >= 0)
+		{
+		num_tab[i] = num + '0';
+		}
+		j = 0;
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		buffer[(*buffer_index)++] = num_tab[i];
+		count++;
+		if (*buffer_index == BUFFER_SIZE)
+		{
+			flush_buffer(buffer, buffer_index);
+		}
+	}
+	return (count);
+}
