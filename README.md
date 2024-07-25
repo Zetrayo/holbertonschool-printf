@@ -6,7 +6,8 @@ _printf allows users to print a variety of characters and variables on their ter
 
 ## Project Tests
 
-This project was tested using these compilation flags : `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c`
+This project was tested using these compilation flags : 
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c`
 
 This project was subjected to multiple tests using the main.c file which we included here:
 ```c
