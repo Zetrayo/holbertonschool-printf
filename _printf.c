@@ -1,5 +1,15 @@
 #include "main.h"
 
+format_t formats[] = {
+	{'c', print_char},
+	{'s', print_string},
+	{'d', print_int},
+	{'i', print_int},
+	{'R', print_rot13string},
+	{'o', print_octal},
+	{0, NULL}
+};
+
 /**
  * flush_buffer - Writes the buffer contents using _putchar
  * @buffer: The buffer to flush
