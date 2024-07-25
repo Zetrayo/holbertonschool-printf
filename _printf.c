@@ -44,15 +44,23 @@ int _printf(const char *format, ...)
 		{
 			buffer[buffer_index++] = format[i];
 			count++;
-			if (buffer_index == BUFFER_SIZE)
-				flush_buffer(buffer, &buffer_index);
 		}
-		else if (format[++i])
-			count += handle_format(format[i], formats, args, buffer, &buffer_index);
+		else
+		{
+			if (format[i + 1] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+			count += handle_format(format[i + 1], formats, args, buffer, &buffer_index);
+			i++;
+		}
+		if (buffer_index == BUFFER_SIZE)
+			count += flush_buffer(buffer, &buffer_index);
 		i++;
 	}
 	if (buffer_index > 0)
-		flush_buffer(buffer, &buffer_index);
+		count += flush_buffer(buffer, &buffer_index);
 	va_end(args);
 	return (count);
 }
@@ -84,18 +92,4 @@ int handle_format(char spec, format_t *formats, va_list args,
 	buffer[(*buffer_index)++] = '%';
 	buffer[(*buffer_index)++] = spec;
 	return (2);
-}
-
-#include "main.h"
-
-/**
-* _putchar - Entry point
-*
-* @c: character to print
-* Return: Always 0 (Success)
-*/
-int _putchar(char c)
-{
-	write(1, &c, 1);
-	return (0);
 }
