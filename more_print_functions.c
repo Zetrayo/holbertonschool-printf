@@ -165,3 +165,39 @@ int print_upper_hex(va_list args, char *buffer, int *buffer_index)
 	}
 	return (count);
 }
+
+/**
+ * print_reverse - Prints a string in reverse
+ * @args: List of arguments
+ * @buffer: Buffer array to handle print
+ * @buffer_index: Index at which to add next char, represents the length
+ *
+ * Return: Number of chars printed
+ */
+int print_reverse(va_list args, char *buffer, int *buffer_index)
+{
+	char *str;
+	int i, count = 0;
+
+	str = va_arg(args, char *);
+
+	if (str == NULL)
+	{
+		str = ")Null(";
+	}
+
+	for (i = 0; str[i]; i++)
+		;
+
+	for (i = i - 1; i >= 0; i--)
+	{
+		buffer[(*buffer_index)++] = str[i];
+		count++;
+		if (*buffer_index == BUFFER_SIZE)
+		{
+			count += flush_buffer(buffer, buffer_index);
+		}
+	}
+
+	return (count);
+}
