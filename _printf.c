@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 		{'u', print_unsigned_int},
 		{'x', print_lower_hex},
 		{'X', print_upper_hex},
+		{'r', print_reverse},
 		{0, NULL}
 	};
 
