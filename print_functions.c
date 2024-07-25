@@ -81,7 +81,7 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 	if (str == NULL)
 		str = "(null)";
 
-	while (str[count])
+	while (*str)
 	{
 		buffer[(*buffer_index)++] = str[count];
 		if (*buffer_index == BUFFER_SIZE)
