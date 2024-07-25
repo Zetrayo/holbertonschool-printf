@@ -8,10 +8,11 @@
  */
 int flush_buffer(char *buffer, int *buffer_index)
 {
-	int count;
-
+	int count = 0;
+	printf("%i", count);
 	count = write(1, buffer, *buffer_index);
 	*buffer_index = 0;
+	printf("%i", count);
 	return (count);
 }
 
@@ -70,13 +71,13 @@ int *buffer_index, format_t *formats)
 			buffer[(*buffer_index)++] = format[i];
 			count++;
 			if (*buffer_index == BUFFER_SIZE)
-				count += flush_buffer(buffer, buffer_index);
+				flush_buffer(buffer, buffer_index);
 		}
 		else
 		{
 			i++;
-			if (format[i] == '\0')
-				return (-1);
+			/*if (format[i] == '\0')*/
+				/*return (-1);*/
 			count += handle_format(format[i], formats, args, buffer, buffer_index);
 		}
 		i++;
