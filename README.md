@@ -8,9 +8,7 @@ _printf allows users to print a variety of characters and variables on their ter
 
 This project was tested using these compilation flags : `gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c`
 
-This project was subjected to multiple tests which we included here:
-
-We used this main.c file to test the different functions :
+This project was subjected to multiple tests using the main.c file which we included here:
 ```c
 #include <limits.h>
 #include <stdio.h>
@@ -109,7 +107,7 @@ Rot13 : [%R]
 For the function "_printf()" to work , the correct specifiers needs to be used.
 The list of all current working specifiers is provided and updated here :
 
-|Variable Type  |Specifier | 
+|Variable Type  |Specifier |
 |---------------|----------|
 |String |%s |
 |Integer |%d |
@@ -167,7 +165,7 @@ Result :
 
 This project was made by , Fassih Belmokhtar and José Puertas
 
-## Special Mention 
+## Special Mention
 
 # Holberton School
 
