@@ -10,30 +10,36 @@
  */
 int print_binary(va_list args, char *buffer, int *buffer_index)
 {
-	unsigned int n, m, i, sum;
-	unsigned int a[32];
+	unsigned int n = va_arg(args, unsigned int);
+	unsigned int mask = 1U << 31;
+	int started = 0;
 	int count = 0;
 
-	n = va_arg(args, unsigned int);
-	m = 2147483648; /* (2 ^ 31) */
-	a[0] = n / m;
-	for (i = 1; i < 32; i++)
+	if (n == 0)
 	{
-		m /= 2;
-		a[i] = (n / m) % 2;
+		buffer[(*buffer_index)++] = '0';
+		return (1);
 	}
-	for (i = 0, sum = 0; i < 32; i++)
+
+	while (mask > 0)
 	{
-		sum += a[i];
-		if (sum || i == 31)
+		if (n & mask)
 		{
-			buffer[(*buffer_index)++] = '0' + a[i];
+			buffer[(*buffer_index)++] = '1';
+			started = 1;
 			count++;
-			if (*buffer_index == BUFFER_SIZE)
-			{
-				count += flush_buffer(buffer, buffer_index);
-			}
 		}
+		else if (started)
+		{
+			buffer[(*buffer_index)++] = '0';
+			count++;
+		}
+
+		if (*buffer_index == BUFFER_SIZE)
+			count += flush_buffer(buffer, buffer_index);
+
+		mask >>= 1;
 	}
+
 	return (count);
 }
