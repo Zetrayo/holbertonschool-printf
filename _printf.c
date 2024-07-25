@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * flush_buffer - Writes the buffer contents using _putchar
  * @buffer: The buffer to flush
@@ -32,6 +31,9 @@ int _printf(const char *format, ...)
 		{'i', print_int},
 		{'R', print_rot13string},
 		{'o', print_octal},
+		{'u', print_unsigned_int},
+		{'x', print_lower_hex},
+		{'X', print_upper_hex},
 		{0, NULL}
 	};
 

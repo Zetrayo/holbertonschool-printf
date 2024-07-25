@@ -50,7 +50,7 @@ int print_number(unsigned int n, char *buffer, int *buffer_index)
  * @buffer: Buffer array to handle print
  * @buffer_index: Index at which to add next char, represents the length
  *
- * Return: Number of digits printed
+ * Return: Number of characters printed
  */
 int print_char(va_list arg, char *buffer, int *buffer_index)
 {
@@ -71,7 +71,7 @@ int print_char(va_list arg, char *buffer, int *buffer_index)
  * @buffer: Buffer array to handle print
  * @buffer_index: Index at which to add next char, represents the length
  *
- * Return: Number of digits printed
+ * Return: Number of characters printed
  */
 int print_string(va_list arg,  char *buffer, int *buffer_index)
 {

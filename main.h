@@ -32,5 +32,8 @@ int flush_buffer(char *buffer, int *buffer_index);
 int print_number(unsigned int n, char *buffer, int *buffer_index);
 int print_rot13string(va_list args, char *buffer, int *buffer_index);
 int print_octal(va_list args, char *buffer, int *buffer_index);
+int print_unsigned_int(va_list args, char *buffer, int *buffer_index);
+int print_lower_hex(va_list args, char *buffer, int *buffer_index);
+int print_upper_hex(va_list args, char *buffer, int *buffer_index);
 
 #endif /* MAIN_H */
