@@ -10,7 +10,7 @@
  */
 int print_octal(va_list args, char *buffer, int *buffer_index)
 {
-	int n = va_arg(args, int);
+	unsigned int n = va_arg(args, int);
 	int count = 0, i = 0, num = 0;
 	char octal[BUFFER_SIZE];
 
