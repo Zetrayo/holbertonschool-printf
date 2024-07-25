@@ -47,10 +47,12 @@ int _printf(const char *format, ...)
 			if (buffer_index == BUFFER_SIZE)
 				flush_buffer(buffer, &buffer_index);
 		}
-		else if (format[++i] == '\0')
-			return (0);
 		else if (format[++i])
+		{
+			if (format[i] == '\0')
+				return (0);
 			count += handle_format(format[i], formats, args, buffer, &buffer_index);
+		}
 		i++;
 	}
 	if (buffer_index > 0)
