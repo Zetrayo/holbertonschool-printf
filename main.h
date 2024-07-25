@@ -18,6 +18,16 @@ typedef struct format
 	int (*f)(va_list, char*, int*);
 } format_t;
 
+format_t formats[] = {
+	{'c', print_char},
+	{'s', print_string},
+	{'d', print_int},
+	{'i', print_int},
+	{'R', print_rot13string},
+	{'o', print_octal},
+	{0, NULL}
+};
+
 /* function definitions */
 
 int _printf(const char *format, ...);

@@ -25,15 +25,6 @@ int _printf(const char *format, ...)
 	va_list args;
 	int i = 0, count = 0, buffer_index = 0;
 	char buffer[BUFFER_SIZE];
-	format_t formats[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'d', print_int},
-		{'i', print_int},
-		{'R', print_rot13string},
-		{'o', print_octal},
-		{0, NULL}
-	};
 
 	if (!format)
 		return (-1);
