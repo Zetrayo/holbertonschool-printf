@@ -66,11 +66,11 @@ Length:[39, 39]
 Length:[39, 39]
 Negative:[-762534]
 Negative:[-762534]
-Unsigned:[%u]
 Unsigned:[2147484671]
-Unsigned octal:[%o]
+Unsigned:[2147484671]
 Unsigned octal:[20000001777]
-Unsigned hexadecimal:[%x, %X]
+Unsigned octal:[20000001777]
+Unsigned hexadecimal:[800003ff, 800003FF]
 Unsigned hexadecimal:[800003ff, 800003FF]
 Character:[H]
 Character:[H]
@@ -98,6 +98,7 @@ Rot13 : [%R]
 |main.h | Header file containing function prototypes and necessary includes |
 |_printf.c | Main file containing functions to print regular characters and detect specifiers used |
 |print_functions.c | File containing the different functions that allow _printf.c to print variables |
+|more_print_functions.c | File containing additional functions that allow _printf.c to print variables |
 |man_3_printf | Text file containing information about _printf |
 |Flowchart_printf.jpg | Image file containing a flowchart that showcases how _printf functions |
 
@@ -115,6 +116,9 @@ The list of all current working specifiers is provided and updated here :
 |Integer base 10|%i |
 |Percent symbol |%% |
 |Rot13 |%R |
+|unsigned int |%u |
+|Integer base 8 |%o |
+|integer base 16|%x & %X|
 
 When the function "_printf()" is succesful in printing the data sent to it, the return value is a count of all characters printed, else if it fails to print, the return value is -1.
 
