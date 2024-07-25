@@ -90,7 +90,13 @@ Rot13 : [%R]
 ```
 ## Man-page Installation
 
-
+To install the man-page use the following commands :
+```c
+sudo mkdir /usr/local/man/man3
+sudo install -g 0 -o 0 -m 0644 man_3_printf /usr/local/man/man3/_printf.3
+sudo gzip /usr/local/man/man3/_printf.3
+sudo mandb
+```
 ## Files
 
 |File |Description |
