@@ -34,9 +34,9 @@ int print_octal(va_list args, char *buffer, int *buffer_index)
 	return (count);
 }
 
-/*
-%o print a number in octal (base 8)
-%u print an unsigned decimal (base 10) number
-%x print a number in hexidecimal (base 16) , letters in lowercase
-%X print a number in hexidecimal (base 16) , letters in uppercase
-*/
+/**
+ * %o print a number in octal (base 8)
+ * %u print an unsigned decimal (base 10) number
+ * %x print a number in hexidecimal (base 16) , letters in lowercase
+ * %X print a number in hexidecimal (base 16) , letters in uppercase
+ */
