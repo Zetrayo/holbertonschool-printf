@@ -35,6 +35,7 @@ int _printf(const char *format, ...)
 		{'x', print_lower_hex},
 		{'X', print_upper_hex},
 		{'r', print_reverse},
+		{'b', print_binary},
 		{0, NULL}
 	};
 
