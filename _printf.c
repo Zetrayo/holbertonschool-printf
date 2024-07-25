@@ -32,6 +32,7 @@ int _printf(const char *format, ...)
 		{'d', print_int},
 		{'i', print_int},
 		{'R', print_rot13string},
+        {'o', print_octal},
 		{0, NULL}
 	};
 
