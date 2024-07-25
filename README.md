@@ -2,7 +2,7 @@
 
 _printf is a project for Holberton School which imitates the "printf()" function found in the "stdio.h" library.
 
-_printf allows users to print a variety of variables on their terminal.
+_printf allows users to print a variety of characters and variables on their terminal.
 
 ## Project Tests
 
@@ -10,7 +10,7 @@ This project was tested using these compilation flags : `gcc -Wall -Werror -Wext
 
 This project was subjected to multiple tests which we included here:
 
-Using this main.c file to test the different functions
+We used this main.c file to test the different functions :
 ```c
 #include <limits.h>
 #include <stdio.h>
@@ -118,12 +118,13 @@ The list of all current working specifiers is provided and updated here :
 |Percent symbol |%% |
 |Rot13 |%R |
 
+When the function "_printf()" is succesful in printing the data sent to it, the return value is a count of all characters printed, else if it fails to print, the return value is -1.
 
 ## Examples
 
 Basic single character example:
 ```c
-char character = "C";
+char character = 'C';
 
 _printf("I %c you", character);
 ```
