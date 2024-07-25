@@ -21,6 +21,8 @@ typedef struct format
 /* function definitions */
 
 int _printf(const char *format, ...);
+int process_format(const char *format, va_list args, char *buffer,
+					int *buffer_index, format_t *formats);
 int print_char(va_list args, char *buffer, int *buffer_index);
 int print_string(va_list args, char *buffer, int *buffer_index);
 int print_int(va_list args, char *buffer, int *buffer_index);
