@@ -44,23 +44,15 @@ int _printf(const char *format, ...)
 		{
 			buffer[buffer_index++] = format[i];
 			count++;
+			if (buffer_index == BUFFER_SIZE)
+				flush_buffer(buffer, &buffer_index);
 		}
-		else
-		{
-			if (format[i + 1] == '\0')
-			{
-				va_end(args);
-				return (-1);
-			}
-			count += handle_format(format[i + 1], formats, args, buffer, &buffer_index);
-			i++;
-		}
-		if (buffer_index == BUFFER_SIZE)
-			count += flush_buffer(buffer, &buffer_index);
+		else if (format[++i])
+			count += handle_format(format[i], formats, args, buffer, &buffer_index);
 		i++;
 	}
 	if (buffer_index > 0)
-		count += flush_buffer(buffer, &buffer_index);
+		flush_buffer(buffer, &buffer_index);
 	va_end(args);
 	return (count);
 }
