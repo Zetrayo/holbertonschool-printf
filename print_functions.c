@@ -88,7 +88,6 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 			flush_buffer(buffer, buffer_index);
 		count++;
 	}
-	str[count] = '\0';
 	return (count);
 }
 
