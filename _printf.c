@@ -76,8 +76,8 @@ int *buffer_index, format_t *formats)
 		else
 		{
 			i++;
-			/*if (format[i] == '\0')*/
-				/*return (-1);*/
+			if (format[i] == '\0')
+				return (-1);
 			count += handle_format(format[i], formats, args, buffer, buffer_index);
 		}
 		i++;
