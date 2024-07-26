@@ -14,6 +14,11 @@ int print_octal(va_list args, char *buffer, int *buffer_index)
 	int count = 0, i = 0, num = 0;
 	char octal[BUFFER_SIZE];
 
+	if (n == 0)
+	{
+		octal[i] = num + '0';
+		i++;
+	}
 	while (n > 0)
 	{
 		num = n % 8;
@@ -48,6 +53,11 @@ int print_unsigned_int(va_list args, char *buffer, int *buffer_index)
 	int count = 0, num = 0, i = 0;
 	char num_tab[BUFFER_SIZE];
 
+	if (n == 0)
+	{
+		num_tab[i] = num + '0';
+		i++;
+	}
 	while (n > 0)
 	{
 		num = n % 10;
@@ -79,11 +89,14 @@ int print_unsigned_int(va_list args, char *buffer, int *buffer_index)
 int print_lower_hex(va_list args, char *buffer, int *buffer_index)
 {
 	unsigned int n = va_arg(args, int);
-	int count = 0, num = 0, i = 0, j = 0;
-	char num_tab[BUFFER_SIZE];
-	int in[6] = {10, 11, 12, 13, 14, 15};
-	char out[6] = {'a', 'b', 'c', 'd', 'e', 'f'};
+	int count = 0, num = 0, i = 0, j = 0, in[6] = {10, 11, 12, 13, 14, 15};
+	char num_tab[BUFFER_SIZE], out[6] = {'a', 'b', 'c', 'd', 'e', 'f'};
 
+	if (n == 0)
+	{
+		num_tab[i] = num + '0';
+		i++;
+	}
 	while (n > 0)
 	{
 		num = n % 16;
@@ -128,11 +141,14 @@ int print_lower_hex(va_list args, char *buffer, int *buffer_index)
 int print_upper_hex(va_list args, char *buffer, int *buffer_index)
 {
 	unsigned int n = va_arg(args, int);
-	int count = 0, num = 0, i = 0, j = 0;
-	char num_tab[BUFFER_SIZE];
-	int in[6] = {10, 11, 12, 13, 14, 15};
-	char out[6] = {'A', 'B', 'C', 'D', 'E', 'F'};
+	int count = 0, num = 0, i = 0, j = 0, in[6] = {10, 11, 12, 13, 14, 15};
+	char num_tab[BUFFER_SIZE], out[6] = {'A', 'B', 'C', 'D', 'E', 'F'};
 
+	if (n == 0)
+	{
+		num_tab[i] = num + '0';
+		i++;
+	}
 	while (n > 0)
 	{
 		num = n % 16;
@@ -159,9 +175,7 @@ int print_upper_hex(va_list args, char *buffer, int *buffer_index)
 		buffer[(*buffer_index)++] = num_tab[i];
 		count++;
 		if (*buffer_index == BUFFER_SIZE)
-		{
 			flush_buffer(buffer, buffer_index);
-		}
 	}
 	return (count);
 }
