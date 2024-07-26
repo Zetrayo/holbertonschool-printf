@@ -22,72 +22,70 @@ This project was subjected to multiple tests using the main.c file which we incl
  */
 int main(void)
 {
-    int len;
-    int len2;
-    unsigned int ui;
-    void *addr;
+	int len;
+	int len2;
+	unsigned int ui;
+	void *addr;
 
-    len = _printf("Let's try to printf a simple sentence.\n");
-    len2 = printf("Let's try to printf a simple sentence.\n");
-    ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-    printf("Unknown:[%r]\n");
-    _printf("Rot13 : [%R]\n", "Awesome!");
-    printf("Rot13 : [%R]\n", "Awesome!");
-    return (0);
+	len = _printf("_printf : Let's try to printf a simple sentence.\n");
+	len2 = printf("printf  : Let's try to printf a simple sentence.\n");
+	ui = (unsigned int)INT_MAX + 1024;
+	addr = (void *)0x7ffe637541f0;
+	_printf("_printf : Length:[%d, %i]\n", len, len);
+	printf("printf  : Length:[%d, %i]\n", len2, len2);
+	_printf("_printf : Negative:[%d]\n", -762534);
+	printf("printf  : Negative:[%d]\n", -762534);
+	_printf("_printf : Unsigned:[%u]\n", ui);
+	printf("printf  : Unsigned:[%u]\n", ui);
+	_printf("_printf : Unsigned octal:[%o]\n", ui);
+	printf("printf  : Unsigned octal:[%o]\n", ui);
+	_printf("_printf : Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	printf("printf  : Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	_printf("_printf : Character:[%c]\n", 'H');
+	printf("printf  : Character:[%c]\n", 'H');
+	_printf("_printf : String:[%s]\n", "I am a string !");
+	printf("printf  : String:[%s]\n", "I am a string !");
+	_printf("_printf : Address:[%p]\n", addr);
+	printf("printf  : Address:[%p]\n", addr);
+	len = _printf("_printf : Percent:[%%]\n");
+	len2 = printf("printf  : Percent:[%%]\n");
+	_printf("_printf : Len:[%d]\n", len);
+	printf("printf  : Len:[%d]\n", len2);
+	_printf("_printf : Reverse string:[%r]\n", "Reverse string");
+	_printf("_printf :  Unknown : [%z]\n");
+	printf("printf  : Unknown:[%r]\n");
+
+	return (0);
 }
 ```
 
 Output:
 ```c
-Let's try to printf a simple sentence.
-Let's try to printf a simple sentence.
-Length:[39, 39]
-Length:[39, 39]
-Negative:[-762534]
-Negative:[-762534]
-Unsigned:[2147484671]
-Unsigned:[2147484671]
-Unsigned octal:[20000001777]
-Unsigned octal:[20000001777]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Unsigned hexadecimal:[800003ff, 800003FF]
-Character:[H]
-Character:[H]
-String:[I am a string !]
-String:[I am a string !]
-Address:[%p]
-Address:[0x7ffe637541f0]
-Percent:[%]
-Percent:[%]
-Len:[12]
-Len:[12]
-Unknown:[%r]
-Unknown:[%r]
-Rot13 : [Njfbzr!]
-Rot13 : [%R]
-
+_printf : Let's try to printf a simple sentence.
+printf  : Let's try to printf a simple sentence.
+_printf : Length:[49, 49]
+printf  : Length:[49, 49]
+_printf : Negative:[-762534]
+printf  : Negative:[-762534]
+_printf : Unsigned:[2147484671]
+printf  : Unsigned:[2147484671]
+_printf : Unsigned octal:[20000001777]
+printf  : Unsigned octal:[20000001777]
+_printf : Unsigned hexadecimal:[800003ff, 800003FF]
+printf  : Unsigned hexadecimal:[800003ff, 800003FF]
+_printf : Character:[H]
+printf  : Character:[H]
+_printf : String:[I am a string !]
+printf  : String:[I am a string !]
+_printf : Address:[0x7ffe637541f0]
+printf  : Address:[0x7ffe637541f0]
+_printf : Percent:[%]
+printf  : Percent:[%]
+_printf : Len:[22]
+printf  : Len:[22]
+_printf : Reverse string:[gnirts esreveR]
+_printf :  Unknown : [%z]
+printf  : Unknown:[%r]
 ```
 ## Man-page Installation
 
@@ -98,6 +96,11 @@ sudo install -g 0 -o 0 -m 0644 man_3_printf /usr/local/man/man3/_printf.3
 sudo gzip /usr/local/man/man3/_printf.3
 sudo mandb
 ```
+
+Or if you dare to try : 
+Simply execute './compile_install.sh' which will compile all the c source files, install the man-page in your system and ask i you want to see it's content, if not, it will provide you the command to see it later.
+(WARNING : you shall never execute a bash script from unkown sources, unless you've read the content of the bash script and know what it is meant to do !)
+
 ## Files
 
 |File |Description |
@@ -106,6 +109,7 @@ sudo mandb
 |_printf.c | Main file containing functions to print regular characters and detect specifiers used |
 |print_functions.c | File containing the different functions that allow _printf.c to print variables |
 |more_print_functions.c | File containing additional functions that allow _printf.c to print variables |
+|even_more_print_functions.c | File containing additional functions that allow _printf.c to print variables |
 |man_3_printf | Text file containing information about _printf |
 |Flowchart_printf.jpg | Image file containing a flowchart that showcases how _printf functions |
 
@@ -126,6 +130,9 @@ The list of all current working specifiers is provided and updated here :
 |unsigned int |%u |
 |Integer base 8 |%o |
 |integer base 16|%x & %X|
+|Binary | %b|
+|Reverse String | %r|
+|Memory Address | %p|
 
 When the function "_printf()" is succesful in printing the data sent to it, the return value is a count of all characters printed, else if it fails to print, the return value is -1.
 
@@ -174,7 +181,7 @@ Result :
 
 ## Contributors
 
-This project was made by , Fassih Belmokhtar and José Puertas
+This project was made by : Fassih Belmokhtar and José Puertas
 
 ## Special Mention
 
