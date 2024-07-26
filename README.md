@@ -98,7 +98,7 @@ sudo mandb
 ```
 
 Or if you dare to try : 
-Simply execute './compile_install.sh' which will compile all the c source files, install the man-page in your system and ask i you want to see it's content, if not, it will provide you the command to see it later.
+Simply execute `./compile_install.sh` which will compile all the c source files, install the man-page in your system and ask i you want to see it's content, if not, it will provide you the command to see it later.
 (WARNING : you shall never execute a bash script from unkown sources, unless you've read the content of the bash script and know what it is meant to do !)
 
 ## Files
