@@ -7,7 +7,7 @@
  */
 int flush_buffer(char *buffer, int *buffer_index)
 {
-	int count;
+	int count = 0;
 
 	count = write(1, buffer, *buffer_index);
 	*buffer_index = 0;
