@@ -91,7 +91,7 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 	{
 		buffer[(*buffer_index)++] = str[count];
 		if (*buffer_index == BUFFER_SIZE)
-			count += flush_buffer(buffer, buffer_index);
+			flush_buffer(buffer, buffer_index);
 		count++;
 	}
 	return (count);

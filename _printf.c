@@ -74,7 +74,7 @@ int *buffer_index, format_t *formats)
 		{
 			buffer[(*buffer_index)++] = format[i];
 			if (*buffer_index == BUFFER_SIZE)
-				count += flush_buffer(buffer, buffer_index);
+				flush_buffer(buffer, buffer_index);
 			count++;
 		}
 		else
