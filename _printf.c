@@ -65,23 +65,26 @@ int _printf(const char *format, ...)
 int process_format(const char *format, va_list args, char *buffer,
 int *buffer_index, format_t *formats)
 {
-	int i = 0, count = 0;
+	int i = 0, count = 0, tmp = 0;
 
 	while (format[i])
 	{
 		if (format[i] != '%')
 		{
 			buffer[(*buffer_index)++] = format[i];
-			count++;
 			if (*buffer_index == BUFFER_SIZE)
 				count += flush_buffer(buffer, buffer_index);
+			count++;
 		}
 		else
 		{
 			i++;
 			if (format[i] == '\0')
 				return (-1);
-			count += handle_format(format[i], formats, args, buffer, buffer_index);
+			tmp = handle_format(format[i], formats, args, buffer, buffer_index);
+			if (tmp == -1)
+				return (-1);
+			count += tmp;
 		}
 		i++;
 	}

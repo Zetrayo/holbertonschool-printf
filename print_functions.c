@@ -15,7 +15,13 @@ int print_int(va_list args, char *buffer, int *buffer_index)
 	unsigned int num = (n < 0) ? -n : n;
 
 	if (n < 0)
-		buffer[(*buffer_index)++] = '-', count++;
+	{
+		buffer[(*buffer_index)++] = '-';
+		count++;
+		num = -n;
+	}
+	else
+		num = n;
 
 	count += print_number(num, buffer, buffer_index);
 	return (count);
@@ -39,7 +45,7 @@ int print_number(unsigned int n, char *buffer, int *buffer_index)
 	buffer[(*buffer_index)++] = (n % 10) + '0';
 	count++;
 	if (*buffer_index == BUFFER_SIZE)
-		flush_buffer(buffer, buffer_index);
+		count += flush_buffer(buffer, buffer_index);
 
 	return (count);
 }
@@ -85,7 +91,7 @@ int print_string(va_list arg,  char *buffer, int *buffer_index)
 	{
 		buffer[(*buffer_index)++] = str[count];
 		if (*buffer_index == BUFFER_SIZE)
-			flush_buffer(buffer, buffer_index);
+			count += flush_buffer(buffer, buffer_index);
 		count++;
 	}
 	return (count);

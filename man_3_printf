@@ -41,7 +41,12 @@ convert an integer into a base16 Hexadecimal system (where x = lowercase, and X 
 .TP
 .B u
 prints an unsigned integer
-
+.TP
+.B b
+converts a integer into binary
+.TP
+.B r
+Prints a reversed string
 
 .SH RETURN VALUE
 Upon successful return, \fB_printf()\fR returns the number of characters printed (excluding the null byte used to end output to strings).
@@ -54,6 +59,12 @@ _printf("Hello %s! %c\\n", "world", '!');
 .fi
 .PP
 Output: Hello world! !
+.PP
+.nf
+_printf("%r", "Hello World!")
+.fi
+.PP
+Output : !drlow olleh
 
 .SH SEE ALSO
 .BR printf (3)
