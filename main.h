@@ -37,5 +37,8 @@ int print_lower_hex(va_list args, char *buffer, int *buffer_index);
 int print_upper_hex(va_list args, char *buffer, int *buffer_index);
 int print_reverse(va_list args, char *buffer, int *buffer_index);
 int print_binary(va_list args, char *buffer, int *buffer_index);
+int print_address(va_list args, char *buffer, int *buffer_index);
+int print_nil(char *buffer, int *buffer_index);
+int print_hex_address(unsigned long int n, char *buffer, int *buffer_index);
 
 #endif /* MAIN_H */
